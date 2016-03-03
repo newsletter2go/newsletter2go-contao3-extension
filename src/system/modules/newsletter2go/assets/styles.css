@@ -1,0 +1,328 @@
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+.wrap {
+    padding: 20px 30px;
+    font-family: sans-serif;
+}
+.wrap h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.wrap .n2go-container h3 {
+    background: #3c763d;
+    color: #ffffff;
+    display: inline-block;
+    padding: 5px 15px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin-left: 12px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+.wrap .n2go-container .wrong-code{
+    background: #8a6d3b;
+}
+.wrap .n2go-container h4 {
+    font-size: 1rem;
+    font-weight: 500;
+
+}
+.wrap .n2go-container .frm-wrapper {
+    display: table;
+    width: 600px;
+}
+.wrap .n2go-container .frm-wrapper input {
+    display: table-cell;
+    width: 300px;
+    height: 30px;
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+    padding: 0 12px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    vertical-align: top;
+    border: 1px solid #eeeeee;
+}
+.wrap .n2go-container .frm-wrapper input[type="submit"] {
+    display: table-cell;
+    width: auto;
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-shadow: 0 1px white;
+    background: #eee linear-gradient(to top, #ccc 0px, #eee 60%) repeat scroll 0 0;
+    height: 32px;
+    border: none;
+}
+.wrap .n2go-container a {
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 12px;
+    margin-bottom: 10px;
+}
+.wrap .n2go-container a:hover {
+    text-decoration: none;
+}
+.wrap .n2go-container .alert strong  {
+    background: rgba(138, 109, 59, 0.8);
+    color: #ffffff;
+    padding: 2px 6px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: inherit;
+    margin-right: 5px;
+}
+.wrap .n2go-container .alert {
+    color: #8a6d3b;
+}
+#widgetFields {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#widgetFields li {
+    margin-bottom: 6px;
+    height: 33px;
+}
+#widgetFields li:first-child span {
+    font-size: 13px;
+    width: 150px;
+    display: inline-block;
+    margin: 0 5px;
+    font-weight: bold;
+    color: #2ea2cc;
+    padding-left: 30px;
+}
+#widgetFields li:first-child span:first-child {
+    padding-left: 0;
+    text-align: right;
+}
+#widgetFields .widgetField {
+    display: table;
+    cursor: move;
+}
+#widgetFields .widgetField input[type=checkbox] {
+    border: 1px solid #b4b9be;
+    clear: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 16px;
+    min-width: 16px;
+    margin: 0;
+    height: 28px;
+}
+#widgetFields .widgetField input:disabled {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .04);
+    color: rgba(51, 51, 51, .5);
+    background: rgba(255,255,255,.5);
+    border-color: rgba(222,222,222,.75);
+}
+#widgetFields .widgetField label {
+    float: left;
+    text-align: right;
+    overflow: hidden;
+    width: 150px;
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 5px 0 5px;
+    padding: 4px;
+}
+#widgetFields .widgetField .n2go-editable-label {
+    transition: all  0.2s ease-in;
+    display: inline-block;
+    border: 1px solid transparent;
+    height: 28px;
+    box-sizing: border-box;
+}
+#widgetFields .widgetField .n2go-editable-label:hover {
+    background-color: #ffffff;
+    border: 1px solid #5b9dd9;
+    border-radius: 4px;
+    padding: 4px;
+}
+.n2go-container #widgetFields + .frm-wrapper input[type="submit"] {
+    margin-left: 324px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 32px;
+    border: none;
+}
+.n2go-container fieldset, .n2go-container form, .n2go-container input, .n2go-container optgroup, .n2go-container select, .n2go-container textarea {
+    font-size: 0.9rem;
+}
+.n2go-container .frm-inline label {
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+.n2go-container .frm-inline input, .n2go-container table input {
+    margin-bottom: 15px;
+    display: table-cell;
+    width: 300px;
+    height: 28px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0 12px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    vertical-align: top;
+    border: 1px solid #eeeeee;
+}
+.n2go-container .frm-inline input[type="submit"] {
+    width: 58px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-shadow: 0 1px white;
+    margin-left: 324px;
+    height: 32px;
+    border:  none;
+}
+.n2go-container table th {
+    vertical-align: middle;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+.n2go-container table  td {
+    padding-bottom: 10px;
+}
+.n2go-container table input {
+    width: 60px;
+    margin-bottom: 0;
+    border: 1px solid #eeeeee;
+}
+#n2goWidget {
+    position: static;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: auto;
+}
+
+#widgetFields .widgetField label.fa-checkbox {
+    float: none;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    width: 17px;
+    height: 17px;
+    vertical-align: middle;
+    margin-top: 4px;
+}
+#widgetFields .widgetField label.fa-checkbox input[type=checkbox] {
+    margin-left: -50px;
+    display: inline-block;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+#widgetFields .widgetField label.fa-checkbox i {
+    font-size: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000000;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #ffffff;
+    z-index: 100;
+}
+#widgetFields .widgetField label.fa-checkbox input.required[type=checkbox]:checked + i {
+    color: #eb1520;
+}
+#widgetFields .widgetField label.fa-checkbox input[type=checkbox]:checked + i {
+    color: #2ea2cc;
+}
+#widgetFields .widgetField label.fa-checkbox input[type=checkbox][disabled] + i {
+    border-color: #C9C9C9;
+    color: #C9C9C9;
+}
+.preview-pane {
+    width: auto;
+    height: 500px;
+    padding: 15px;
+    background: #CCD1CB;
+    border: 1px solid #B2B5B2;
+    box-sizing: border-box;
+}
+.preview-pane textarea {
+    display: none;
+}
+.preview-pane textarea, .preview-pane #widgetPreview  {
+    display: none;
+    border: medium none;
+    height: 465px;
+    resize: none;
+    width: 100%;
+}
+#btnShowPreview, #btnShowSource, #n2goWidget .tl_submit.btn-nl2go {
+    background: #eee linear-gradient(to top, #ccc 0px, #eee 60%) repeat scroll 0 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    text-shadow: 0 1px white;
+    font-weight: bold;
+    height: 28px;
+    padding: 0 12px;
+}
+#btnShowPreview {
+    margin-right: 10px;
+}
+#btnShowPreview.active, #btnShowSource.active {
+    background: #CCD1CB linear-gradient(to top, #CCD1CB 0px, #999 60%) repeat scroll 0 0;
+    text-shadow: 0 1px #999;
+    color: white;
+    border: 1px solid #999;
+}
+#n2goWidget h4 {
+    margin-bottom: 8px;
+    margin-top: 0;
+    font-size: 1rem;
+}
+#n2goWidget p {
+    padding-top: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+@media screen and (min-width: 1200px) {
+    #n2goWidget {
+        position: fixed;
+        right: 25px;
+        top: calc(50% - 250px);
+        width: 432px;
+    }
+    .preview-pane {
+        width: 430px;
+        height: 330px;
+        padding: 15px;
+        background: #CCD1CB;
+        border: 1px solid #B2B5B2;
+        box-sizing: border-box;
+    }
+    .preview-pane textarea, .preview-pane #widgetPreview {
+        height: 290px;
+        resize: none;
+        width: 390px;
+    }
+}
+#previewLoadingMask {
+    text-align: center;
+    padding-top: 135px;
+}

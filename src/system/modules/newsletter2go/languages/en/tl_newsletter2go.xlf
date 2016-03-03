@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+    <file datatype="php" original="system/modules/newsletter2go/languages/en/tl_newsletter2go.php" source-language="en">
+        <body>
+            <trans-unit id="tl_newsletter2go.apikey_title">
+                <source>Connect to Newsletter2Go</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.apikey_placeholder">
+                <source>Insert your Newsletter2Go API key</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.apikey_link">
+                <source>Where do I find my API key?</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.api_connected">
+                <source>Connected!</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.api_not_connected">
+                <source>Not connected yet!</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.doicode_title">
+                <source>Double Opt In Code</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.doicode_placeholder">
+                <source>Insert your Newsletter2Go DOI Code</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.doicode_link">
+                <source>Where can I find the double opt in code?</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.doi_connected">
+                <source>Valid DOI-Code ( Host: %s)</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.doi_not_connected">
+                <source>Invalid DOI-Code</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.email">
+                <source>E-mail</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.first_name">
+                <source>First name</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.last_name">
+                <source>Last name</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.gender">
+                <source>Gender</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.required">
+                <source>required</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.save">
+                <source>Save</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.config_subs_form">
+                <source>Configure subscription form</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.field_label">
+                <source>Newsletter2Go field</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.field_title_label">
+                <source>Title label</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.data_fields_title">
+                <source>Which data fields should be visible in your subscription form?</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.success">
+                <source>Success</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.failure_email">
+                <source>Failure (wrong email syntax)</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.failure_fields">
+                <source>Failure (required fields)</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.failure_general">
+                <source>Failure (general error)</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.failure_subscribed">
+                <source>Failure (already subscribed)</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.button_text">
+                <source>Text on button</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.attention">
+                <source><![CDATA[
+                <strong>Attention: </strong>In germany, according to german law, it's only allowed to set email-address as required
+                ]]></source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.texts.buttonText">
+                <source>Subscribe now!</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.texts.success">
+                <source>Thank you for signing up. We have sent you an email with a confirmation link. Please check your inbox.</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.texts.failureSubsc">
+                <source>Thank you for signing up. You are already signed up and will continue to receive our newsletter.</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.texts.failureEmail">
+                <source>The email address you inserted does not seem to be valid. Please correct it.</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.texts.failureRequired">
+                <source>Please fill all fields.</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.texts.failureError">
+                <source>We were not able to sign you up. Please try again.</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.form_bg_color">
+                <source>Background color</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.form_text_color">
+                <source>Text color</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.input_border_color">
+                <source>Input border color</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.input_bg_color">
+                <source>Input background color</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.btn_text_color">
+                <source>Button text color</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.btn_bg_color">
+                <source>Button background color</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.texts_title">
+                <source>General settings</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.preview">
+                <source>Preview</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.source_code">
+                <source>Source Code</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.colors_title">
+                <source>Visual appearance</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.save2">
+                <source>Save subscription form</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.widget_title">
+                <source>Here is the preview for you</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.widget_description">
+                <source>Your subscription form will show up under "widgets". Feel free to place it on any page.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
