@@ -8,6 +8,10 @@
     font-weight: 400;
     margin-bottom: 0;
 }
+.wrap h1 {
+    color: red;
+    font-size: 1.5rem;
+}
 .wrap .n2go-container h3 {
     background: #3c763d;
     color: #ffffff;

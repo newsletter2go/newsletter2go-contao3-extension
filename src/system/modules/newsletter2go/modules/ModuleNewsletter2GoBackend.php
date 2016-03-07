@@ -25,6 +25,11 @@ class ModuleNewsletter2GoBackend extends \BackendModule
         $tplObject->button = $GLOBALS['TL_LANG']['MSC']['backBT'];
         $tplObject->myLabels = $GLOBALS['TL_LANG']['tl_newsletter2go'];
         $tplObject->action = ampersand(\Environment::get('request'));
+        if (!function_exists('curl_version')) {
+            $tplObject->curlMissing = 1;
+
+            return;
+        }
 
         $model = Newsletter2GoModel::getInstance();
 

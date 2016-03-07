@@ -3,10 +3,10 @@
   <file datatype="php" original="system/modules/newsletter2go/languages/en/modules.php" source-language="en">
     <body>
       <trans-unit id="MOD.Newsletter2Go.0">
-        <source>Newsletter2go</source>
+        <source>Newsletter2Go</source>
       </trans-unit>
       <trans-unit id="MOD.Newsletter2Go.1">
-        <source>Newsletter2go plugin configuration</source>
+        <source>Newsletter2Go plugin configuration</source>
       </trans-unit>
     </body>
   </file>

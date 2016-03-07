@@ -8,6 +8,9 @@
             <trans-unit id="tl_newsletter2go.apikey_placeholder">
                 <source>Insert your Newsletter2Go API key</source>
             </trans-unit>
+            <trans-unit id="tl_newsletter2go.curl_missing">
+                <source>CURL library is required to use this Newsletter2Go module. Please install CURL to continue.</source>
+            </trans-unit>
             <trans-unit id="tl_newsletter2go.apikey_link">
                 <source>Where do I find my API key?</source>
             </trans-unit>
