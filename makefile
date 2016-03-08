@@ -5,6 +5,7 @@ $(version): $(outfile)
 
 $(outfile): tmp/build.zip
 	mv tmp/build.zip $(outfile)
+	rm -rf tmp
 
 tmp/build.zip: tmp/newsletter2go/info.xml
 	cd tmp/ && zip -r build.zip newsletter2go/

@@ -211,7 +211,7 @@ class Newsletter2GoModel
         }
 
         if ($type === 'group') {
-            $sql .= ' LEFT JOIN tl_newsletter_recipients s ON s.email = a.email AND s.active = 1 ';
+            $sql .= ' LEFT JOIN tl_newsletter_recipients s ON s.email = a.email';
             $conditions[] = ($id ? 'groups LIKE \'%1:"' . $id . '"%\'' : 'groups IS NULL');
             if ($subscribed) {
                 $conditions[] = 's.active = 1';
