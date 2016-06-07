@@ -45,8 +45,8 @@ class ModuleNewsletter2GoFrontend extends \Module
     protected function compile()
     {
         $model = Newsletter2GoModel::getInstance();
-        $widgetSource = $model->getConfigValue('widgetSource');
-        $this->Template->widgetSource = htmlspecialchars_decode($widgetSource);
+        $this->Template->formUniqueCode = $model->getConfigValue('formUniqueCode');
+        $this->Template->nl2gStylesConfigObject = $model->getConfigValue('widgetStyleConfig');
     }
 
     private function myGenerateAjax()

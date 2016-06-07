@@ -30,127 +30,61 @@
             <hr/>
         </div>
         <div>
-            <h2><?= $this->myLabels['doicode_title'] ?></h2>
+            <h2><?= $this->myLabels['formUniqueCode_title'] ?></h2>
 
             <div class="n2go-container">
-                <h3 id="n2goHeaderDOI" <?= $this->doiSuccess ? '' : 'class="wrong-code"' ?>>
-                    <?= $this->doiSuccess ? sprintf($this->myLabels['doi_connected'], $this->doiHost) : $this->myLabels['doi_not_connected'] ?>
-                </h3>
-
                 <div class="frm-wrapper">
-                    <input type="text" name="doiCode" placeholder="<?= $this->myLabels['doicode_placeholder'] ?>"
-                           value="<?= $this->doiCode ?>"/>
+                    <input type="text" name="formUniqueCode" placeholder="<?= $this->myLabels['formUniqueCode_placeholder'] ?>"
+                           value="<?= $this->formUniqueCode ?>" id="formUniqueCode"/>
                     <input type="submit" form="nl2goConfigForm" value="<?= $this->myLabels['save'] ?>"
                            class="button button-primary btn-nl2go"/>
                 </div>
                 <a href="https://www.newsletter2go.de/hilfe/empfaenger-verwalten/wo-kann-ich-double-op-in-einstellen/"
-                   target="_blank"><?= $this->myLabels['doicode_link'] ?></a>
+                   target="_blank"><?= $this->myLabels['formUniqueCode_link'] ?></a>
             </div>
             <hr/>
         </div>
         <div>
             <h2><?= $this->myLabels['config_subs_form'] ?></h2>
-            <input type="hidden" id="requiredTranslation" value=" (<?= $this->myLabels['required'] ?>)"/>
 
-            <div class="n2go-container">
-                <h4><?= $this->myLabels['data_fields_title'] ?></h4>
-
-                <div class="alert alert-info"><?= $this->myLabels['attention'] ?> </div>
-                <ul id="widgetFields">
-                    <li>
-                        <span class="n2go-table-header"><?= $this->myLabels['field_label'] ?></span>
-                        <span class="n2go-table-header"><?= $this->myLabels['field_title_label'] ?></span>
-                    </li>
-                    <?php
-                    $i = 1;
-                    foreach ($this->fields as $value) {
-                        $fid = $value['id'];
-                        ?>
-                        <li class="widgetField" draggable="true">
-                            <label class="fa-checkbox" for="<?= $fid ?>">
-                                <input type="checkbox" <?= $value['disabled'] ?> id="<?= $fid ?>"
-                                       name="fields[<?= $fid ?>][selected]"
-                                       class="js-n2go-widget-field <?= $value['required'] ? 'required' : '' ?>"
-                                       title="<?= $value['title'] ?>"
-                                       value="<?= $fid ?>" <?= $value['selected'] ?> />
-                                <i class="fa fa-check"></i>
-                            </label>
-                            <input type="hidden" value="<?= $i++ ?>" name="fields[<?= $fid ?>][sort]">
-                            <label for="<?= $fid ?>"><?= $value['label'] ?>: </label>
-
-                            <div
-                                class="n2go-editable-label"><?= $value['title'] ?><?php echo $value['required'] ? " ({$this->myLabels['required']})" : '' ?></div>
-                            <input type="hidden" value="<?= $value['required'] ?>" name="fields[<?= $fid ?>][required]">
-                            <input type="hidden" value="<?= $value['title'] ?>" name="fields[<?= $fid ?>][title]">
-                        </li>
-                    <?php } ?>
-                </ul>
-                <div class="frm-wrapper">
-                    <input type="submit" form="nl2goConfigForm" value="<?= $this->myLabels['save'] ?>" class="tl_submit btn-nl2go"/>
-                </div>
-            </div>
-            <hr/>
-            <div class="n2go-container">
-                <h4><?= $this->myLabels['texts_title'] ?></h4>
-
-                <div class="frm-inline">
-                    <label for="success"><?= $this->myLabels['success'] ?></label>
-                    <input type="text" name="texts[success]" id="success" value="<?= $this->texts['success']?>" size="75"/>
-
-                    <label for="failureSubsc"><?= $this->myLabels['failure_subscribed'] ?></label>
-                    <input type="text" id="failureSubsc" name="texts[failureSubsc]" value="<?= $this->texts['failureSubsc']?>" size="75"/>
-
-                    <label for="failureEmail"><?= $this->myLabels['failure_email'] ?></label>
-                    <input type="text" id="failureEmail" name="texts[failureEmail]" value="<?= $this->texts['failureEmail']?>" size="75"/>
-
-                    <label for="failureRequired"><?= $this->myLabels['failure_fields'] ?></label>
-                    <input type="text" id="failureRequired" name="texts[failureRequired]" value="<?= $this->texts['failureRequired']?>" size="75"/>
-
-                    <label for="failureError"><?= $this->myLabels['failure_general'] ?></label>
-                    <input type="text" id="failureError" name="texts[failureError]" value="<?= $this->texts['failureError']?>" size="75"/>
-
-                    <label for="buttonText"><?= $this->myLabels['button_text'] ?></label>
-                    <input class="js-n2go-widget-field" type="text" id="buttonText" name="texts[buttonText]"
-                           value="<?= $this->texts['buttonText']?>" size="75"/>
-                    <br/>
-                    <br/>
-                    <input type="submit" form="nl2goConfigForm" value="Save" class="tl_submit btn-nl2go"/>
-                </div>
-            </div>
-            <hr/>
             <div class="n2go-container">
                 <div>
                     <h4><?= $this->myLabels['colors_title'] ?></h4>
                     <table>
                         <tr>
                             <th><label for="formBackgroundColor"><?= $this->myLabels['form_bg_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker" id="formBackgroundColor" type="text"
-                                       name="colors[formBackground]" value="<?= $this->colors['formBackground']?>" size="7"/></td>
+                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="formBackgroundColor" type="text"
+                                       name="form.background-color"  size="7"/></td>
                         </tr>
                         <tr>
-                            <th><label for="textFieldColor"><?= $this->myLabels['form_text_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker" id="textFieldColor" type="text"
-                                       name="colors[text]" value="<?= $this->colors['text']?>" size="7"/></td>
+                            <th><label for="labelColor"><?= $this->myLabels['label_text_color'] ?></label></th>
+                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="labelColor" type="text"
+                                       name="label.color"  size="7"/></td>
+                        </tr>
+                        <tr>
+                            <th><label for="textFieldColor"><?= $this->myLabels['input_text_color'] ?></label></th>
+                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="textFieldColor" type="text"
+                                       name="input.color"  size="7"/></td>
                         </tr>
                         <tr>
                             <th><label for="inputBorderColor"><?= $this->myLabels['input_border_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker" id="inputBorderColor" type="text"
-                                       name="colors[border]" value="<?= $this->colors['border']?>" size="7"/></td>
+                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="inputBorderColor" type="text"
+                                       name="input.border-color"  size="7"/></td>
                         </tr>
                         <tr>
                             <th><label for="inputBackgroundColor"><?= $this->myLabels['input_bg_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker" id="inputBackgroundColor" type="text"
-                                       name="colors[inputBackground]" value="<?= $this->colors['inputBackground']?>" size="7"/></td>
+                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="inputBackgroundColor" type="text"
+                                       name="input.background-color" size="7"/></td>
                         </tr>
                         <tr>
                             <th><label for="buttonTextColor"><?= $this->myLabels['btn_text_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker" id="buttonTextColor" type="text"
-                                       name="colors[btnText]" value="<?= $this->colors['btnText']?>" size="7"/></td>
+                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="buttonTextColor" type="text"
+                                       name="button.color"  size="7"/></td>
                         </tr>
                         <tr>
                             <th><label for="buttonBackgroundColor"><?= $this->myLabels['btn_bg_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker" id="buttonBackgroundColor" type="text"
-                                       name="colors[btnBackground]" value="<?= $this->colors['btnBackground']?>" size="7"/></td>
+                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="buttonBackgroundColor" type="text"
+                                       name="button.background-color" size="7"/></td>
                         </tr>
                     </table>
                     <div id="colorPicker"></div>
@@ -159,19 +93,31 @@
         </div>
         <div id="n2goWidget">
             <h4><?= $this->myLabels['widget_title'] ?></h4>
-            <input type="button" value="<?= $this->myLabels['preview'] ?>" class="button" id="btnShowPreview"/>
-            <input type="button" value="<?= $this->myLabels['source_code'] ?>" class="button" id="btnShowSource"/>
-            <div class="preview-pane">
-                <iframe id="widgetPreview" src="index.php"></iframe>
-                <textarea id="widgetSourceCode" name="widgetSourceCode" title="Widget Source Code"><?= $this->widgetSource ?></textarea>
-                <div id="previewLoadingMask">
-                    <img src="system/modules/newsletter2go/assets/ajax-loader.gif" alt="Loading..." />
+            <div id="n2gButtons">
+                <input type="button" value="Preview" class="button" id="btnShowPreview" />
+                <input type="button" value="Configure Styles" class="button" id="btnShowConfig"/>
+            </div>
+
+            <div id="preview-form-panel" class="preview-pane">
+                <div id="widgetPreview">
+                    <?php
+                    if(!empty($this->errorMessages) === false){ ?>
+                        <script id="n2g_script">
+                        </script>
+                    <?php }else{ ?>
+                        <h3 class="n2go-error-general"><?php
+                            foreach($this->errorMessages as $errorMessage){
+                                echo $errorMessage.'<br/>';
+                            }
+                            ?>
+                          </h3>
+                    <?php } ?>
                 </div>
+                <textarea id="widgetStyleConfig" name="widgetStyleConfig"><?php echo $this->nl2gStylesConfigObject; ?></textarea>
             </div>
             <p><?= $this->myLabels['widget_description'] ?></p>
             <input type="submit" value="<?= $this->myLabels['save2'] ?>" class="tl_submit btn-nl2go"
                    name="saveApiKey"/>
         </div>
     </form>
-
 </div>
