@@ -30,8 +30,8 @@ window.addEventListener('load', function () {
 
             for (var i=0; i < styleArray.length; i++){
                 var styleField = styleArray[i].split(':');
-                if (styleField[0] == field) {
-                    return styleField[1];
+                if (styleField[0].trim() == field) {
+                    return styleField[1].trim();
                 }
             }
             return '';

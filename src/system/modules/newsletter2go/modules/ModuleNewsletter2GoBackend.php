@@ -47,6 +47,8 @@ class ModuleNewsletter2GoBackend extends \BackendModule
         $tplObject->formUniqueCode = $model->getConfigValue('formUniqueCode');
         $tplObject->nl2gStylesConfigObject = $model->getConfigValue('widgetStyleConfig');
 
+        $response = $model->executeN2GO('get/attributes', array('key' => $tplObject->apiKey));
+        $tplObject->apiSuccess = $response['success'];
 
         $errorMessages = array();
         if (!strlen(trim($tplObject->formUniqueCode)) > 0 || $tplObject->formUniqueCode === null) {
