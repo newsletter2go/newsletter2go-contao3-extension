@@ -26,3 +26,4 @@ array_insert($GLOBALS['BE_MOD']['content'], 5, array
  * Front end modules
  */
 $GLOBALS['FE_MOD']['miscellaneous']['Newsletter2Go'] = 'ModuleNewsletter2GoFrontend';
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('Newsletter2GoTags', 'n2gReplaceTags');
