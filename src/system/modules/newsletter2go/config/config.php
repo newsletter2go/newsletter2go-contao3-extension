@@ -15,7 +15,8 @@ array_insert($GLOBALS['BE_MOD']['content'], 5, array
         'javascript' => array(
             'system/modules/newsletter2go/assets/lib/jquery-1.11.3.min.js',
             'system/modules/newsletter2go/assets/lib/farbtastic.js',
-            'system/modules/newsletter2go/assets/script.js',
+            'system/modules/newsletter2go/assets/newsletter2go.js',
+            'system/modules/newsletter2go/assets/newsletter2go_default.js',
         ),
         'callback' => 'ModuleNewsletter2GoBackend',
     ),

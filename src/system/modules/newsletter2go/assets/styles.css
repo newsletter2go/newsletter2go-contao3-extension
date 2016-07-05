@@ -266,13 +266,13 @@
     display: none;
 }
 .preview-pane textarea, .preview-pane #widgetPreview  {
-    display: none;
+
     border: medium none;
     height: 465px;
     resize: none;
     width: 100%;
 }
-#btnShowPreview, #btnShowSource, #n2goWidget .tl_submit.btn-nl2go {
+#btnShowPreview, #btnShowConfig, #n2goWidget .tl_submit.btn-nl2go {
     background: #eee linear-gradient(to top, #ccc 0px, #eee 60%) repeat scroll 0 0;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -286,10 +286,12 @@
     height: 28px;
     padding: 0 12px;
 }
+
+
 #btnShowPreview {
     margin-right: 10px;
 }
-#btnShowPreview.active, #btnShowSource.active {
+#btnShowPreview.active, #btnShowConfig.active {
     background: #CCD1CB linear-gradient(to top, #CCD1CB 0px, #999 60%) repeat scroll 0 0;
     text-shadow: 0 1px #999;
     color: white;
@@ -329,4 +331,12 @@
 #previewLoadingMask {
     text-align: center;
     padding-top: 135px;
+}
+
+.nl2g-hidden{
+    display:none;
+}
+
+.n2go-error-general {
+    color:red;border:red 2px solid;padding:10px 3px;
 }

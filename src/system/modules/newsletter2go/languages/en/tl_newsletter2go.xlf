@@ -20,14 +20,14 @@
             <trans-unit id="tl_newsletter2go.api_not_connected">
                 <source>Not connected yet!</source>
             </trans-unit>
-            <trans-unit id="tl_newsletter2go.doicode_title">
-                <source>Double Opt In Code</source>
+            <trans-unit id="tl_newsletter2go.formUniqueCode_title">
+                <source>Form Unique Code</source>
             </trans-unit>
-            <trans-unit id="tl_newsletter2go.doicode_placeholder">
-                <source>Insert your Newsletter2Go DOI Code</source>
+            <trans-unit id="tl_newsletter2go.formUniqueCode_placeholder">
+                <source>Insert your Form Unique Code</source>
             </trans-unit>
-            <trans-unit id="tl_newsletter2go.doicode_link">
-                <source>Where can I find the double opt in code?</source>
+            <trans-unit id="tl_newsletter2go.formUniqueCode_link">
+                <source>Where can I find the form unique code?</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.doi_connected">
                 <source>Valid DOI-Code ( Host: %s)</source>
@@ -107,10 +107,13 @@
                 <source>We were not able to sign you up. Please try again.</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.form_bg_color">
-                <source>Background color</source>
+                <source>Form background color</source>
             </trans-unit>
-            <trans-unit id="tl_newsletter2go.form_text_color">
-                <source>Text color</source>
+            <trans-unit id="tl_newsletter2go.input_text_color">
+                <source>Input text color</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.label_text_color">
+                <source>Label text color</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.input_border_color">
                 <source>Input border color</source>
