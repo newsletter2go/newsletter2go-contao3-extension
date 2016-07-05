@@ -7,6 +7,7 @@ ClassLoader::addClasses(array(
     // Classes
     'Contao\Newsletter2GoApi' => 'system/modules/newsletter2go/classes/Newsletter2GoApi.php',
     'Contao\Nl2go_ResponseHelper' => 'system/modules/newsletter2go/classes/Nl2go_ResponseHelper.php',
+    'Contao\Newsletter2GoTags' => 'system/modules/newsletter2go/classes/Newsletter2GoTags.php',
 
     // Modules
     'Contao\ModuleNewsletter2GoBackend' => 'system/modules/newsletter2go/modules/ModuleNewsletter2GoBackend.php',
