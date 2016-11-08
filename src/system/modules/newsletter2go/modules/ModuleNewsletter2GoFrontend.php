@@ -47,6 +47,17 @@ class ModuleNewsletter2GoFrontend extends \Module
         $model = Newsletter2GoModel::getInstance();
         $this->Template->formUniqueCode = $model->getConfigValue('formUniqueCode');
         $this->Template->nl2gStylesConfigObject = $model->getConfigValue('widgetStyleConfig');
+        $result = $model->getFormType($this->arrData['id']);
+
+        if ($result === 'Unsubscribe-Form') {
+            $formType = 'unsubscribe';
+        } else {
+            $formType = 'subscribe';
+        }
+
+        $this->Template->nl2gFormType = $formType;
+        $this->Template->uniqueId = uniqid();
+        
     }
 
     private function myGenerateAjax()

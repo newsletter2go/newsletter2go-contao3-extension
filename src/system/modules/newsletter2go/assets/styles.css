@@ -1,342 +1,539 @@
-@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
-.wrap {
-    padding: 20px 30px;
-    font-family: sans-serif;
-}
-.wrap h2 {
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 0;
-}
-.wrap h1 {
-    color: red;
-    font-size: 1.5rem;
-}
-.wrap .n2go-container h3 {
-    background: #3c763d;
-    color: #ffffff;
-    display: inline-block;
-    padding: 5px 15px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    margin-left: 12px;
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-}
-.wrap .n2go-container .wrong-code{
-    background: #8a6d3b;
-}
-.wrap .n2go-container h4 {
-    font-size: 1rem;
-    font-weight: 500;
-
-}
-.wrap .n2go-container .frm-wrapper {
-    display: table;
+.n2go-container {
+    padding: 25px 0 30px 20px;
     width: 600px;
 }
-.wrap .n2go-container .frm-wrapper input {
-    display: table-cell;
-    width: 300px;
-    height: 30px;
-    -webkit-border-radius: 3px 0 0 3px;
-    -moz-border-radius: 3px 0 0 3px;
-    border-radius: 3px 0 0 3px;
-    padding: 0 12px;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
-    vertical-align: top;
-    border: 1px solid #eeeeee;
+
+.n2go-container a {
+    margin: auto;
 }
-.wrap .n2go-container .frm-wrapper input[type="submit"] {
-    display: table-cell;
-    width: auto;
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-shadow: 0 1px white;
-    background: #eee linear-gradient(to top, #ccc 0px, #eee 60%) repeat scroll 0 0;
-    height: 32px;
-    border: none;
+
+.n2go-container table {
+    text-align: left;
 }
-.wrap .n2go-container a {
-    text-decoration: underline;
-    display: inline-block;
-    margin-top: 5px;
-    margin-left: 12px;
-    margin-bottom: 10px;
+
+.n2go-container table td {
+    padding: 5px;
 }
-.wrap .n2go-container a:hover {
-    text-decoration: none;
+
+.preview-pane {
+    border-top: 1px solid #d8dee4;
+    width: 400px;
+    padding: 15px 0;
+    display: inline-table;
+    margin-top: -1px;
 }
-.wrap .n2go-container .alert strong  {
-    background: rgba(138, 109, 59, 0.8);
-    color: #ffffff;
-    padding: 2px 6px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    display: inline-block;
-    vertical-align: inherit;
-    margin-right: 5px;
+
+.preview-pane iframe {
+    height: 100%;
 }
-.wrap .n2go-container .alert {
-    color: #8a6d3b;
+
+#n2goHeaderConnection {
+    display: table;
+    background-color: greenyellow;
+    padding: 10px;
+    border-radius: 10px;
 }
-#widgetFields {
-    margin-top: 20px;
-    margin-bottom: 20px;
+
+#n2gButtons li {
+    background: #eef2f5;
+    border: 1px solid #d8dee4;
+    border-bottom-color: transparent;
+    line-height: 14px;
+    padding: 9px 16px;
+    border-radius: 4px 4px 0 0;
+    float: left;
+    margin: 0;
+    display: block;
+    cursor: pointer;
 }
-#widgetFields li {
-    margin-bottom: 6px;
-    height: 33px;
+
+#n2gButtons li.active {
+    border-bottom-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+    background-color: #ffffff;
 }
-#widgetFields li:first-child span {
-    font-size: 13px;
-    width: 150px;
-    display: inline-block;
-    margin: 0 5px;
-    font-weight: bold;
-    color: #2ea2cc;
-    padding-left: 30px;
-}
-#widgetFields li:first-child span:first-child {
-    padding-left: 0;
-    text-align: right;
-}
-#widgetFields .widgetField {
+
+/*#n2goHeaderDOI {
+    display: table;
+    background-color: yellow;!*<?php echo (isset($attributesApi['doi-success']) &&$attributesApi['doi-success'] ? 'greenyellow' : 'yellow'); ?>;*!
+    padding: 10px;
+    border-radius: 10px;
+}*/
+
+.widgetField {
     display: table;
     cursor: move;
 }
-#widgetFields .widgetField input[type=checkbox] {
-    border: 1px solid #b4b9be;
-    clear: none;
-    cursor: pointer;
+
+#widgetStyleConfig {
+    font-family: Consolas, Monaco, monospace;
+    font-size: 13px;
+    background: #f9f9f9;
+    outline: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.n2go-container label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.n2go-editable-label {
+    margin-left: 10px;
     display: inline-block;
-    line-height: 0;
-    text-align: center;
-    vertical-align: middle;
-    width: 16px;
-    min-width: 16px;
-    margin: 0;
-    height: 28px;
+    font-weight: bold;
+    cursor: text;
+    transition: padding 0.2s ease;
+    border: solid 1px transparent;
+    padding: 2px;
 }
-#widgetFields .widgetField input:disabled {
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .04);
-    color: rgba(51, 51, 51, .5);
-    background: rgba(255,255,255,.5);
-    border-color: rgba(222,222,222,.75);
+
+.n2go-editable-label:hover {
+    background-color: #ffffff;
+    padding: 4px;
+    border: solid 1px #5b9dd9;
+    border-radius: 4px;
 }
-#widgetFields .widgetField label {
+
+#n2goWidget {
+    position: fixed;
+    top: 50%;
+    margin-top: -215px;
+    right: 25px;
+    width: 435px;
+}
+
+
+
+.btn-nl2go {
     float: left;
+    cursor: pointer;
+    border-color:blue;
+    background-color:white;
+}
+
+.wrap hr {
+    max-width: 600px;
+    margin-left: 0;
+}
+
+@media screen and (max-width: 1270px) {
+    #n2goWidget {
+        float: left;
+        position: relative;
+        top: inherit;
+        margin-top: inherit;
+        right: inherit;
+    }
+}
+
+input[type=checkbox].n2go-required:checked:before {
+    color: red;
+}
+
+.n2go-error {
+    margin: 15px 0;
+    color: #b94a48;
+    background-color: #f2dede;
+    padding: 10px;
+    border: 1px solid #b94a48;
+    display: inline-block;
+}
+
+.widgetField label {
+    float:left;
     text-align: right;
     overflow: hidden;
     width: 150px;
     display: inline-block;
     font-weight: bold;
     margin: 0 5px 0 5px;
-    padding: 4px;
-}
-#widgetFields .widgetField .n2go-editable-label {
-    transition: all  0.2s ease-in;
-    display: inline-block;
-    border: 1px solid transparent;
-    height: 28px;
-    box-sizing: border-box;
-}
-#widgetFields .widgetField .n2go-editable-label:hover {
-    background-color: #ffffff;
-    border: 1px solid #5b9dd9;
-    border-radius: 4px;
-    padding: 4px;
-}
-.n2go-container #widgetFields + .frm-wrapper input[type="submit"] {
-    margin-left: 324px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    height: 32px;
-    border: none;
-}
-.n2go-container fieldset, .n2go-container form, .n2go-container input, .n2go-container optgroup, .n2go-container select, .n2go-container textarea {
-    font-size: 0.9rem;
-}
-.n2go-container .frm-inline label {
-    display: block;
-    font-size: 0.8rem;
-    margin-bottom: 5px;
-}
-.n2go-container .frm-inline input, .n2go-container table input {
-    margin-bottom: 15px;
-    display: table-cell;
-    width: 300px;
-    height: 28px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    padding: 0 12px;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
-    vertical-align: top;
-    border: 1px solid #eeeeee;
-}
-.n2go-container .frm-inline input[type="submit"] {
-    width: 58px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-shadow: 0 1px white;
-    margin-left: 324px;
-    height: 32px;
-    border:  none;
-}
-.n2go-container table th {
-    vertical-align: middle;
-    padding-bottom: 10px;
-    padding-right: 10px;
-}
-.n2go-container table  td {
-    padding-bottom: 10px;
-}
-.n2go-container table input {
-    width: 60px;
-    margin-bottom: 0;
-    border: 1px solid #eeeeee;
-}
-#n2goWidget {
-    position: static;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: auto;
+    padding: 3px;
 }
 
-#widgetFields .widgetField label.fa-checkbox {
-    float: none;
+.n2go-table-header {
+    font-size: 14px;
+    width: 150px;
     display: inline-block;
-    overflow: hidden;
-    position: relative;
-    width: 17px;
-    height: 17px;
-    vertical-align: middle;
-    margin-top: 4px;
-}
-#widgetFields .widgetField label.fa-checkbox input[type=checkbox] {
-    margin-left: -50px;
-    display: inline-block;
-    visibility: hidden;
-    height: 0;
-    width: 0;
-}
-#widgetFields .widgetField label.fa-checkbox i {
-    font-size: 1rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 15px;
-    height: 15px;
-    border: 1px solid #000000;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    color: #ffffff;
-    z-index: 100;
-}
-#widgetFields .widgetField label.fa-checkbox input.required[type=checkbox]:checked + i {
-    color: #eb1520;
-}
-#widgetFields .widgetField label.fa-checkbox input[type=checkbox]:checked + i {
+    margin: 0 5px;
+    font-weight: bold;
     color: #2ea2cc;
 }
-#widgetFields .widgetField label.fa-checkbox input[type=checkbox][disabled] + i {
-    border-color: #C9C9C9;
-    color: #C9C9C9;
-}
-.preview-pane {
-    width: auto;
-    height: 500px;
-    padding: 15px;
-    background: #CCD1CB;
-    border: 1px solid #B2B5B2;
-    box-sizing: border-box;
-}
-.preview-pane textarea {
-    display: none;
-}
-.preview-pane textarea, .preview-pane #widgetPreview  {
 
-    border: medium none;
-    height: 465px;
-    resize: none;
-    width: 100%;
-}
-#btnShowPreview, #btnShowConfig, #n2goWidget .tl_submit.btn-nl2go {
-    background: #eee linear-gradient(to top, #ccc 0px, #eee 60%) repeat scroll 0 0;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    margin-bottom: 10px;
-    font-size: 0.8rem;
-    text-shadow: 0 1px white;
-    font-weight: bold;
-    height: 28px;
-    padding: 0 12px;
+.n2go-error-general {
+    color:red;border:red 2px solid;padding:10px 3px;
 }
 
+.nl2g-settings-input-fields {
+    width: 300px;
 
-#btnShowPreview {
-    margin-right: 10px;
 }
-#btnShowPreview.active, #btnShowConfig.active {
-    background: #CCD1CB linear-gradient(to top, #CCD1CB 0px, #999 60%) repeat scroll 0 0;
-    text-shadow: 0 1px #999;
-    color: white;
-    border: 1px solid #999;
-}
-#n2goWidget h4 {
-    margin-bottom: 8px;
-    margin-top: 0;
-    font-size: 1rem;
-}
-#n2goWidget p {
-    padding-top: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-@media screen and (min-width: 1200px) {
-    #n2goWidget {
-        position: fixed;
-        right: 25px;
-        top: calc(50% - 250px);
-        width: 432px;
-    }
-    .preview-pane {
-        width: 430px;
-        height: 330px;
-        padding: 15px;
-        background: #CCD1CB;
-        border: 1px solid #B2B5B2;
-        box-sizing: border-box;
-    }
-    .preview-pane textarea, .preview-pane #widgetPreview {
-        height: 290px;
-        resize: none;
-        width: 390px;
-    }
-}
-#previewLoadingMask {
-    text-align: center;
-    padding-top: 135px;
+
+.nl2g-inner-container {
+    width: 600px;
+    float:left;
+    vertical-align:top;
 }
 
 .nl2g-hidden{
     display:none;
 }
 
-.n2go-error-general {
-    color:red;border:red 2px solid;padding:10px 3px;
+#widgetSourceCode {
+    font-family: Consolas,Monaco,monospace;
+    padding: 0;
+    font-size: 12px;
+    background: #f9f9f9;
+    outline: 0;
+    overflow-y: auto;
+    width: 100%;
+    min-height: 300px;
+}
+
+/* new style */
+
+.n2go-section {
+    color: #5f666b !important;
+    background-color: #eef2f5;
+    width: 100%;
+    float: left;
+    font-family: sans-serif !important;
+}
+
+.n2go-block50 {
+    width: 49%;
+    float: left;
+}
+
+.n2go-block50:first-child {
+    margin-right: 1%;
+}
+
+.n2go-block50:last-child {
+    margin-last: 1%;
+}
+
+.n2go-block50.main-block {
+    width: 45%;
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.n2go-block25 {
+    /*width: 25%;*/
+    float:left;
+}
+
+.n2go-section #widgetStyleConfig {
+    white-space: pre;
+    width: 100%;
+    border-radius: 0;
+    padding: 2px 5px;
+    display: inline-block;
+    font-size: 90%;
+    color: #eeeeee;
+    background-color: #5f666b;
+    overflow-x: hidden;
+    float: left;
+    min-height:450px;
+}
+
+.n2go-section label {
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-radius: 0;
+    color: #afbac3;
+    padding: 0;
+}
+
+.n2go-section .preview-pane {
+    width: 100% !important;
+    float: left;
+    display: block;
+}
+
+.n2go-section span,
+.n2go-section h3 {
+    color: #5f666b;
+}
+.nav-tabs li a {
+    color: #afbac3;
+    background: #eef2f5;
+    border: 1px solid #d8dee4;
+    margin-right: -1px;
+    line-height: 14px;
+    padding: 9px 16px;
+}
+
+.nav-tabs li.active a,
+.nav-tabs li.active a:hover,
+.nav-tabs li.active a:focus {
+    color: #5f666b;
+}
+
+.n2go-paddingr10{
+    padding-right: 10px;
+}
+
+.n2go-paddingr20{
+    padding-right: 20px;
+}
+
+.n2go-paddingl10{
+    padding-left: 10px;
+}
+
+.n2go-paddingl20{
+    padding-left: 20px;
+}
+
+.n2go-row {
+    margin-bottom: 20px;
+    float: left;
+    width: 100%;
+}
+.n2go-select{
+    border: 1px solid #d8dee4;
+    border-radius: 4px;
+    height: auto !important;
+    padding: 8px 5px !important;
+    min-width: 180px;
+}
+
+.save-btn {
+    float:left;
+}
+
+.n2go-cp {
+    width: 100%;
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+.n2go-cp .input-group-addon,
+.n2go-cp .input-group-btn {
+    color: #afbac3;
+    line-height: initial;
+    float: left;
+    width: 34px;
+    height: 38px;
+}
+
+.n2go-cp button.input-group-btn {
+    border-radius: 4px;
+    border: 1px solid #d8dee4;
+    margin-left: -2px;
+}
+
+.n2go-cp .input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #5f666b;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.n2go-cp .input-group-btn .input-group-addon {
+    padding: 0 !important;
+}
+
+.colorpicker-element .add-on i,
+.colorpicker-element .input-group-addon i {
+    height: 34px;
+    width: 34px;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #ccc;
+    border-left: 0;
+}
+
+.input-group-addon, .input-group-btn, .cp.form-control {
+    display: table-cell;
+}
+
+.n2go-cp .form-control {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 80%;
+    margin-left: -2px;
+    margin-bottom: 0;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 34px;
+    font-size: 14px;
+    color: #5f666b;
+    background-color: #fff;
+    text-transform: uppercase;
+    border: 1px solid #d8dee4;
+}
+
+.n2go-cp.input-group {
+    margin-bottom: 10px;
+}
+.panel .panel-heading {
+    border-bottom: 1px solid #d8dee4;
+    padding: 0 0 8px 0;
+    margin-bottom: 20px;
+}
+
+.colorpicker.dropdown-menu {
+    width: 123px !important;
+    min-width: inherit !important;
+}
+
+.n2go-input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #5f666b;
+    text-align: center;
+    background-color: #ffffff;
+    border-style: solid;
+    border-color: #d8dee4;
+    border-width: 1px 0 1px 1px;
+    border-radius: 4px;
+    vertical-align: middle;
+    display: table-cell;
+}
+.n2go-label-success {
+    background-color: rgba(25, 215, 110, 0.05);
+    border: 1px solid #19d76e;
+    color: #19d76e;
+    padding: 4px;
+    text-transform: uppercase;
+}
+
+.n2go-label-success span {
+    color: #19d76e;
+}
+
+.n2go-btn {
+    color: #fff;
+    background-color: #00baff;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid #00a7e6;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+}
+
+.n2go-btn span {
+    color: #ffffff;
+}
+
+.n2go-btn a, .n2go-btn a:hover{
+    text-decoration: none;
+}
+
+.n2go-text-right {
+    text-align: right;
+}
+
+#nl2gStylesConfig {
+    display: none;
+}
+
+.n2go-label{
+    width: 49%;
+    float: left;
+}
+
+.n2go-configure{
+    width: 49%;
+    float: left;
+}
+
+@media only screen and (min-width: 1200px) and  (max-width: 1330px){
+    .n2go-block50.main-block {
+        width: 45% !important;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .n2go-block50.main-block {
+        width: 44%;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .n2go-block50.main-block {
+        width: 92% !important;
+        padding: 4%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .n2go-label-success{
+        width: auto;
+        min-width: 0;
+        float: left;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .n2go-configure{
+        width: auto;
+        min-width: 0;
+        float: left;
+    }
+}
+
+.n2go-disconnect-btn, .n2go-reset-styles-btn  {
+
+    font-size: 13px;
+    height: 28px;
+    width: 88px;
+    padding: 0 10px 1px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    -moz-box-sizing: border-box;
+    border-color: #ccc;
+    background: #f7f7f7;
+    box-shadow: 0 1px 0 #ccc;
+
+}
+.n2go-disconnect-btn:hover{
+    background: #fafafa;
+    border-color: #999;
+    color: #23282d;
+}
+
+.n2go-reset-styles-btn {
+    float:left;
+    height: 22px;
+    padding: 6px 2px 0px 8px;
+}
+
+.n2go-reset-styles-btn:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.n2go-reset-styles-btn:hover {
+    background: #fafafa;
+    border-color: #999;
+    color: #23282d;
+    cursor: pointer;
 }
