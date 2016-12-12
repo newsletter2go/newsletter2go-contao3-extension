@@ -12,6 +12,7 @@ class ModuleNewsletter2GoBackend extends \BackendModule
     protected $strTemplate = 'be_newsletter2go';
 
     private $version = 4000;
+
     /**
      * Compile the current element.
      */
@@ -31,28 +32,28 @@ class ModuleNewsletter2GoBackend extends \BackendModule
 
             return;
         }
-        $disconnect =\Input::post('disconnect');
-        if(isset($disconnect)){
-			$baseUrl = $this->Environment->url;
+        $disconnect = \Input::post('disconnect');
+        if (isset($disconnect)) {
+            $baseUrl = $this->Environment->url;
             $requestUri = $this->Environment->requestUri;
-            $nl2goUrl = $baseUrl.$requestUri;
+            $nl2goUrl = $baseUrl . $requestUri;
             $this->disconnect();
-			$this->redirect($nl2goUrl);
+            $this->redirect($nl2goUrl);
         }
         $model = Newsletter2GoModel::getInstance();
         $tplObject->authKey = $model->getConfigValue('auth_key');
         $tplObject->apiKey = $model->getConfigValue('apiKey');
         $queryParams['version'] = $this->version;
         $queryParams['apiKey'] = $tplObject->apiKey;
-        if($queryParams['apiKey']==''){
+        if ($queryParams['apiKey'] == '') {
             $model->saveConfigValue('apiKey', $this->generateRandomString());
             $queryParams['apiKey'] = $model->getConfigValue('apiKey');
 
         }
 
         $queryParams['language'] = current(explode("-", $GLOBALS['TL_LANGUAGE']));
-        $queryParams['url'] = \Environment::get('base');
-        $queryParams['callBack'] = $queryParams['url'].'nl2go/callback.php';
+        $queryParams['url'] = rtrim(\Environment::get('base'), '/') . '/';
+        $queryParams['callback'] = $queryParams['url'] . 'nl2go/callback.php';
 
         $tplObject->apiKeyConnectUrl = self::N2GO_INTEGRATION_URL . '?' . http_build_query($queryParams);
         $tplObject->forms = $model->getForms($tplObject->authKey);
@@ -78,21 +79,23 @@ class ModuleNewsletter2GoBackend extends \BackendModule
         }
         if (!strlen(trim($tplObject->apiKey)) > 0 || $tplObject->apiKey === null) {
             $errorMessages[] = "Please, enter the api key!";
-         }
+        }
 
         $tplObject->errorMessages = $errorMessages;
 
     }
 
-    private function disconnect(){
+    private function disconnect()
+    {
 
         $model = Newsletter2GoModel::getInstance();
         $model->saveConfigValue('auth_key', null);
-        $model->saveConfigValue('access_token', null );
-        $model->saveConfigValue('refresh_token',null );
+        $model->saveConfigValue('access_token', null);
+        $model->saveConfigValue('refresh_token', null);
         $model->saveConfigValue('formUniqueCode', null);
         $model->saveConfigValue('widgetStyleConfig', null);
     }
+
     private function generateRandomString($length = 40)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
