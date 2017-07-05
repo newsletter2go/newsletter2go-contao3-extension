@@ -2,122 +2,175 @@
     <a href="<?= $this->href ?>" class="header_back" title="<?= $this->title ?>"><?= $this->button ?></a>
 </div>
 
-<div class="wrap">
-    <form action="<?= $this->action ?>" id="nl2goConfigForm" method="POST">
-        <input type="hidden" name="FORM_SUBMIT" value="tl_nl2go_configuration">
-        <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>"/>
-
-        <?php if ($this->curlMissing) { ?>
-            <h1><?= $this->myLabels['curl_missing'] ?></h1>
-        <?php } ?>
-
-        <div>
-            <h2><?= $this->myLabels['apikey_title'] ?></h2>
-
-            <div class="n2go-container">
-                <h3 id="n2goHeaderConnection" <?= $this->apiSuccess ? '' : 'class="wrong-code"' ?> >
-                    <?= $this->apiSuccess ? $this->myLabels['api_connected'] : $this->myLabels['api_not_connected'] ?>
-                </h3>
-
-                <div class="frm-wrapper">
-                    <input type="text" name="apiKey" placeholder="<?= $this->myLabels['apikey_placeholder'] ?>"
-                           value="<?= $this->apiKey ?>"/>
-                    <input type="submit" form="nl2goConfigForm" value="<?= $this->myLabels['save'] ?>" class="tl_submit btn-nl2go"/>
+<form action="<?= $this->action ?>" id="nl2goConfigForm" method="POST">
+    <input type="hidden" name="FORM_SUBMIT" value="tl_nl2go_configuration">
+    <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>"/>
+    <input type="hidden" id="requiredTranslation" value=" (<?= $this->myLabels['required'] ?>)"/>
+    <?php if ($this->curlMissing) { ?>
+    <h1><?= $this->myLabels['curl_missing'] ?></h1>
+    <?php } ?>
+    <div class="n2go-section">
+        <div class="n2go-block50 main-block">
+            <div class="panel">
+                <div class="panel-heading text-center">
+                    <h3><?= $this->myLabels['widget_main_title'] ?></h3>
                 </div>
-                <a href="https://app.newsletter2go.com/en/settings/#/api"
-                   target="_blank"><?= $this->myLabels['apikey_link'] ?></a>
-            </div>
-            <hr/>
-        </div>
-        <div>
-            <h2><?= $this->myLabels['formUniqueCode_title'] ?></h2>
-
-            <div class="n2go-container">
-                <div class="frm-wrapper">
-                    <input type="text" name="formUniqueCode" placeholder="<?= $this->myLabels['formUniqueCode_placeholder'] ?>"
-                           value="<?= $this->formUniqueCode ?>" id="formUniqueCode"/>
-                    <input type="submit" form="nl2goConfigForm" value="<?= $this->myLabels['save'] ?>"
-                           class="button button-primary btn-nl2go"/>
+                <div class="panel-body">
+                    <div class="n2go-row">
+                        <div class="n2go-block50"><span><?= $this->myLabels['apikey_title'] ?></span></div>
+                        <div class="n2go-block25">
+                            <input type="hidden" name="apiKey" placeholder="" value="<?= $this->apiKey ?>" style="width:300px" readonly>
+                            <?php  if ($this->forms === false){ ?>
+                            <div class="n2go-btn">
+                                <a href="<?php echo $this->apiKeyConnectUrl; ?>" target="_blank" style="padding:5px"><span class="fa fa-plug"></span> <span>Login or Create Account</span></a>
+                            </div>
+                            <?php } else { ?>
+                            <span class="n2go-label-success"> <span class="fa fa-check margin-right-5"></span>
+							<span><?= $this->myLabels['api_connected'] ?></span></span>
+                            <br><br><br>
+                            <div>
+                                <button class="tl_submit n2go-disconnect-btn" name="disconnect"><?= $this->myLabels['disconnect'] ?></button>
+                            </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="n2go-row">
+                        <?php if ($this->forms !== false) { ?>
+                        <div class="n2go-block50">
+                            <span><?= $this->myLabels['formUniqueCode_title'] ?></span>
+                        </div>
+                        <div class="n2go-block25">
+                            <select id="formUniqueCode" class="n2go-select" name="formUniqueCode">
+                                <option value="" disabled selected><?= $this->myLabels['please_select'] ?></option>
+                                <?php if (!empty($this->forms)){ ?>
+                                <?php foreach ($this->forms as $form) { ?>
+                                <option value="<?= $form['hash']; ?>" <?php if ($form['hash'] == $this->formUniqueCode) { echo "selected"; } ?>><?php echo $form['name']; ?></option>
+                                <?php } ?>
+                                <?php } else { ?>
+                                <option value=""></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <?php } ?>
+                    </div>
                 </div>
-                <a href="https://www.newsletter2go.de/hilfe/empfaenger-verwalten/wo-kann-ich-double-op-in-einstellen/"
-                   target="_blank"><?= $this->myLabels['formUniqueCode_link'] ?></a>
-            </div>
-            <hr/>
-        </div>
-        <div>
-            <h2><?= $this->myLabels['config_subs_form'] ?></h2>
-
-            <div class="n2go-container">
-                <div>
-                    <h4><?= $this->myLabels['colors_title'] ?></h4>
-                    <table>
-                        <tr>
-                            <th><label for="formBackgroundColor"><?= $this->myLabels['form_bg_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="formBackgroundColor" type="text"
-                                       name="form.background-color"  size="7"/></td>
-                        </tr>
-                        <tr>
-                            <th><label for="labelColor"><?= $this->myLabels['label_text_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="labelColor" type="text"
-                                       name="label.color"  size="7"/></td>
-                        </tr>
-                        <tr>
-                            <th><label for="textFieldColor"><?= $this->myLabels['input_text_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="textFieldColor" type="text"
-                                       name="input.color"  size="7"/></td>
-                        </tr>
-                        <tr>
-                            <th><label for="inputBorderColor"><?= $this->myLabels['input_border_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="inputBorderColor" type="text"
-                                       name="input.border-color"  size="7"/></td>
-                        </tr>
-                        <tr>
-                            <th><label for="inputBackgroundColor"><?= $this->myLabels['input_bg_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="inputBackgroundColor" type="text"
-                                       name="input.background-color" size="7"/></td>
-                        </tr>
-                        <tr>
-                            <th><label for="buttonTextColor"><?= $this->myLabels['btn_text_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="buttonTextColor" type="text"
-                                       name="button.color"  size="7"/></td>
-                        </tr>
-                        <tr>
-                            <th><label for="buttonBackgroundColor"><?= $this->myLabels['btn_bg_color'] ?></label></th>
-                            <td><input class="js-n2go-widget-field color-picker nl2g-fields" id="buttonBackgroundColor" type="text"
-                                       name="button.background-color" size="7"/></td>
-                        </tr>
-                    </table>
-                    <div id="colorPicker"></div>
+                <div class="n2go-row">
+                    <?php  if ($this->formUniqueCode){ ?>
+                    <div class="n2go-block50"><span><?= $this->myLabels['config_subs_form'] ?></span></div>
+                    <div class="n2go-configure">
+                        <label for="formBackgroundColor"><?= $this->myLabels['form_bg_color'] ?></label>
+                        <div class="n2go-cp input-group">
+                            <span class="n2go-input-group-addon">#</span><input id="valueInputFBC" name="form.background-color" type="text" placeholder="" value="FFFFFF" class="n2go-colorField form-control n2go-text-right">
+                            <button id="styleInputFBC" class="input-group-btn jscolor{valueElement:'valueInputFBC', styleElement:'styleInputFBC'}">
+                            </button>
+                        </div>
+                        <label for="labelColor"><?= $this->myLabels['label_text_color'] ?></label>
+                        <div class="n2go-cp input-group">
+                            <span class="n2go-input-group-addon">#</span><input id="valueInputLC" name="label.color" type="text" placeholder="" value="222222" class="n2go-colorField form-control n2go-text-right">
+                            <button id="styleInputLC" class="input-group-btn jscolor{valueElement:'valueInputLC', styleElement:'styleInputLC'}">
+                            </button>
+                        </div>
+                        <label for="textColor"><?= $this->myLabels['input_text_color'] ?></label>
+                        <div class="n2go-cp input-group">
+                            <span class="n2go-input-group-addon">#</span><input id="valueInputIC" name="input.color" type="text" placeholder="" value="222222" class="n2go-colorField form-control n2go-text-right">
+                            <button id="styleInputIC" class="input-group-btn jscolor{valueElement:'valueInputIC', styleElement:'styleInputIC'}">
+                            </button>
+                        </div>
+                        <label for="borderColor"><?= $this->myLabels['input_border_color'] ?></label>
+                        <div class="n2go-cp input-group">
+                            <span class="n2go-input-group-addon">#</span><input id="valueInputIBrC" name="input.border-color" type="text" placeholder="" value="CCCCCC" class="n2go-colorField form-control n2go-text-right">
+                            <button id="styleInputIBrC" class="input-group-btn jscolor{valueElement:'valueInputIBrC', styleElement:'styleInputIBrC'}">
+                            </button>
+                        </div>
+                        <label for="backgroundColor"><?= $this->myLabels['input_bg_color'] ?></label>
+                        <div class="n2go-cp input-group">
+                            <span class="n2go-input-group-addon">#</span><input id="valueInputIBC" name="input.background-color" type="text" placeholder="" value="FFFFFF" class="n2go-colorField form-control n2go-text-right">
+                            <button id="styleInputIBC" class="input-group-btn jscolor{valueElement:'valueInputIBC', styleElement:'styleInputIBC'}">
+                            </button>
+                        </div>
+                        <label for="btnTextColor"><?= $this->myLabels['btn_text_color'] ?></label>
+                        <div class="n2go-cp input-group">
+                            <span class="n2go-input-group-addon">#</span><input id="valueInputBC" type="text" name="button.color" placeholder="" value="FFFFFF" class="n2go-colorField form-control n2go-text-right">
+                            <button id="styleInputBC" class="input-group-btn jscolor{valueElement:'valueInputBC', styleElement:'styleInputBC'}">
+                            </button>
+                        </div>
+                        <label for="btnBackgroundColor"><?= $this->myLabels['btn_bg_color'] ?></label>
+                        <div class="n2go-cp input-group">
+                            <span class="n2go-input-group-addon">#</span><input id="valueInputBBC" type="text" name="button.background-color" placeholder="" value="00BAFF" class="n2go-colorField form-control n2go-text-right">
+                            <button id="styleInputBBC" class="input-group-btn jscolor{valueElement:'valueInputBBC', styleElement:'styleInputBBC'}">
+                            </button>
+                        </div>
+                    </div>
                 </div>
+                <?php } ?>
             </div>
         </div>
-        <div id="n2goWidget">
-            <h4><?= $this->myLabels['widget_title'] ?></h4>
-            <div id="n2gButtons">
-                <input type="button" value="Preview" class="button" id="btnShowPreview" />
-                <input type="button" value="Configure Styles" class="button" id="btnShowConfig"/>
-            </div>
-
-            <div id="preview-form-panel" class="preview-pane">
-                <div id="widgetPreview">
-                    <?php
-                    if(!empty($this->errorMessages) === false){ ?>
-                        <script id="n2g_script">
-                        </script>
-                    <?php }else{ ?>
-                        <h3 class="n2go-error-general"><?php
+        <?php  if ($this->formUniqueCode){ ?>
+        <div class="n2go-block50 main-block">
+            <div class="panel">
+                <div class="panel-heading text-center">
+                    <h3><?= $this->myLabels['widget_title'] ?></h3>
+                </div>
+                <div class="panel-body">
+                    <ul id="n2gButtons" class="nav nav-tabs">
+                        <?php $active = false;
+                         if ($this->forms[$this->formUniqueCode]['type_subscribe']) {
+                        ?>
+                        <li id="btnShowPreviewSubscribe" class="active"><?= $this->myLabels['subscription_form'] ?></li>
+                        <?php
+                            $active = true;
+                        }
+                            if ($this->forms[$this->formUniqueCode]['type_unsubscribe']) {
+                        ?>
+                        <li id="btnShowPreviewUnsubscribe" <?= (!$active ? 'class="active"' : '') ?>><?= $this->myLabels['unsubscription_form'] ?></li>
+                        <?php } ?>
+                        <li id="btnShowConfig" class=""><?= $this->myLabels['source_code'] ?></li>
+                    </ul>
+                    <!-- Tab panes-->
+                    <div id="preview-form-panel" class="preview-pane">
+                        <div id="widgetPreviewSubscribe" <?= (!$active ? 'style="display:none"' : '')?>>
+                            <?php
+                               if(!empty($this->errorMessages) === false){ ?>
+                            <script id="n2g_script_subscribe">
+                            </script>
+                            <?php }else{ ?>
+                            <h3 class="n2go-error-general"><?php
                             foreach($this->errorMessages as $errorMessage){
                                 echo $errorMessage.'<br/>';
-                            }
-                            ?>
-                          </h3>
-                    <?php } ?>
+                                }?>
+                            </h3>
+                            <?php } ?>
+                        </div>
+                        <div id="widgetPreviewUnsubscribe" <?= ($active ? 'style="display:none"' : '') ?>>
+                            <?php if (!empty($this->errorMessages) === false) { ?>
+                            <script id="n2g_script_unsubscribe">
+                            </script>
+                            <?php } else {?>
+                            <h3 class = "n2go-error-general"><?php
+                            foreach($this->errorMessages as $errorMessage){
+                                echo $errorMessage.'<br/>';
+                                }?>
+                            </h3>
+                            <?php } ?>
+                        </div>
+                        <!--<textarea id="widgetStyleConfig" name="widgetStyleConfig" style="display:none"><?php echo $this->nl2gStylesConfigObject; ?></textarea>-->
+                        <div id="nl2gStylesConfig" class="preview-pane">
+                        <!-- <code><?= $this->nl2gStylesConfigObject; ?></code>-->
+                        <textarea id="widgetStyleConfig" name="widgetStyleConfig"><?php echo $this->nl2gStylesConfigObject; ?></textarea>
+                        </div>
+                    </div>
                 </div>
-                <textarea id="widgetStyleConfig" name="widgetStyleConfig"><?php echo $this->nl2gStylesConfigObject; ?></textarea>
             </div>
-            <p><?= $this->myLabels['widget_description'] ?></p>
-            <input type="submit" value="<?= $this->myLabels['save2'] ?>" class="tl_submit btn-nl2go"
-                   name="saveApiKey"/>
+            <div>
+                <a  id="resetStyles" class="n2go-reset-styles-btn" name="resetStyles"><?= $this->myLabels['reset_styles'] ?></a>
+            </div>
         </div>
-    </form>
-</div>
+        <?php } ?>
+    </div>
+    <div class="n2go-section">
+        <br />
+        <input type="submit" value="<?= $this->myLabels['save2'] ?>" class="tl_submit btn-nl2go"
+               name="saveApiKey"/>
+    </div>
+
+</form>

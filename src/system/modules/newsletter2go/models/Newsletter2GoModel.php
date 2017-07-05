@@ -4,6 +4,9 @@ namespace Contao;
 
 class Newsletter2GoModel
 {
+    const N2GO_API_URL = 'https://api-staging.newsletter2go.com/';
+    const N2GO_REFRESH_GRANT_TYPE = 'https://nl2go.com/jwt_refresh';
+    const N2GO_STATIC_URL = 'https://static-staging.newsletter2go.com/';
 
     /** @var \Database */
     private $dbInstance = null;
@@ -260,6 +263,50 @@ class Newsletter2GoModel
     }
 
     /**
+     * Returns forms from Newsletter2Go API
+     *
+     * @param string $authKey
+     * @return boolean|array
+     */
+    public function getForms($authKey = '')
+    {
+        $result = false;
+
+        if (strlen($authKey) > 0) {
+            $form = $this->execute('forms?_expand=1', array());
+            if (isset($form['status']) && $form['status'] >= 200 && $form['status'] < 300) {
+                $result = array();
+                foreach ($form['value'] as $value){
+                    $key = $value['hash'];
+                    $result[$key]['name'] = $value['name'];
+                    $result[$key]['hash'] = $value['hash'];
+                    $result[$key]['type_subscribe'] = $value['type_subscribe'];
+                    $result[$key]['type_unsubscribe'] = $value['type_unsubscribe'];
+
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Retrieves form type for module id
+     * @param string $id
+     * @return string|boolean
+     */
+    public function getFormType($id){
+
+        $result = $this->dbInstance->prepare('SELECT `n2go_form_type` FROM tl_module WHERE `id` = ?')->execute($id);
+        if ($result->count() === 0) {
+            return null;
+        }
+        $array = $result->fetchAssoc();
+
+        return $array['n2go_form_type'];
+    }
+
+    /**
      * @param array $fields
      * @param string $type
      * @return string
@@ -289,6 +336,7 @@ class Newsletter2GoModel
         return 'SELECT ' . implode(', ', $selectFields) . ' FROM ' . $table;
     }
 
+
     /**
      * @param string $varId
      * @return array|false
@@ -303,6 +351,105 @@ class Newsletter2GoModel
         $result = $query->fetchAssoc();
 
         return $result;
+        }
+  /**
+     * Creates request and returns response. New API and access token
+     *
+     * @param string $action
+     * @param array $post
+     * @return string
+     * @internal param mixed $params
+     */
+    private function execute($action, $post)
+    {
+
+        $access_token = $this->getConfigValue('access_token');
+        $responseJson = $this->executeRequest($action, $access_token, $post);
+
+        //access_token is deprecated
+        if(isset($responseJson['status_code']) && $responseJson['status_code'] == 403 || $responseJson['status_code'] == 401 ) {
+
+            $this->refreshTokens();
+            $access_token = $this->getConfigValue('access_token');
+            $responseJson = $this->executeRequest($action, $access_token, $post);
+        }
+        return $responseJson;
+    }
+
+    private function executeRequest($action, $access_token, $post){
+
+        $apiUrl = self::N2GO_API_URL;
+
+        $cURL = curl_init();
+        curl_setopt($cURL, CURLOPT_URL, $apiUrl.$action);
+        curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($cURL, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$access_token));
+
+        if(!empty($post)) {
+            $postData = '';
+            foreach ($post as $k => $v) {
+                $postData .= urlencode($k) . '=' . urlencode($v) . '&';
+            }
+            $postData = substr($postData, 0, -1);
+
+            curl_setopt($cURL, CURLOPT_POST, 1);
+            curl_setopt($cURL, CURLOPT_POSTFIELDS, $postData);
+        }
+
+        curl_setopt($cURL, CURLOPT_SSL_VERIFYPEER, false);
+        $response = curl_exec($cURL);
+        $response = json_decode($response, true);
+        $status = curl_getinfo($cURL);
+        $response['status_code'] = $status['http_code'];
+
+        curl_close($cURL);
+
+        return $response;
+
+    }
+
+    /**
+     * Creates request and returns response, refresh access token
+     *
+     * @return true
+     * @internal param mixed $params
+     */
+    private function refreshTokens() {
+
+        $authKey = $this->getConfigValue('auth_key');
+        $auth = base64_encode($authKey);
+        $refreshToken = $this->getConfigValue('refresh_token');
+        $refreshPost = array(
+            'refresh_token' => $refreshToken,
+            'grant_type' => self::N2GO_REFRESH_GRANT_TYPE
+        );
+        $post = http_build_query($refreshPost);
+
+        $url = self::N2GO_API_URL.'oauth/v2/token';
+
+        $header = array('Authorization: Basic '.$auth, 'Content-Type: application/x-www-form-urlencoded');
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+        $json_response = curl_exec($curl);
+        curl_close($curl);
+
+        $response = json_decode($json_response);
+
+        if(isset($response->access_token) && !empty($response->access_token)) {
+            $this->saveConfigValue('access_token', $response->access_token);
+        }
+        if(isset($response->refresh_token) && !empty($response->refresh_token)) {
+            $this->saveConfigValue('refresh_token', $response->refresh_token);
+        }
+
+        return true;
+
     }
 
 }

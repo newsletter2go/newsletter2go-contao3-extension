@@ -15,13 +15,16 @@
                 <source>Where do I find my API key?</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.api_connected">
-                <source>Connected!</source>
+                <source>Successfully connected</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.widget_main_title">
+                 <source>Newsletter2Go Contao Plugin</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.api_not_connected">
                 <source>Not connected yet!</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.formUniqueCode_title">
-                <source>Form Unique Code</source>
+                <source>Choose the connected form</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.formUniqueCode_placeholder">
                 <source>Insert your Form Unique Code</source>
@@ -54,7 +57,7 @@
                 <source>Save</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.config_subs_form">
-                <source>Configure subscription form</source>
+                <source>Configure the styling of your form</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.field_label">
                 <source>Newsletter2Go field</source>
@@ -130,9 +133,6 @@
             <trans-unit id="tl_newsletter2go.texts_title">
                 <source>General settings</source>
             </trans-unit>
-            <trans-unit id="tl_newsletter2go.preview">
-                <source>Preview</source>
-            </trans-unit>
             <trans-unit id="tl_newsletter2go.source_code">
                 <source>Source Code</source>
             </trans-unit>
@@ -140,13 +140,34 @@
                 <source>Visual appearance</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.save2">
-                <source>Save subscription form</source>
+                <source>Save settings</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.widget_title">
                 <source>Here is the preview for you</source>
             </trans-unit>
             <trans-unit id="tl_newsletter2go.widget_description">
                 <source>Your subscription form will show up under "widgets". Feel free to place it on any page.</source>
+            </trans-unit>
+			<trans-unit id="tl_newsletter2go.disconnect">
+                <source>Disconnect</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.reset_styles">
+                <source>Reset Styles</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.please_select">
+                <source>-- please select --</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.subscription_form">
+                <source>Subscription-Form</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.unsubscription_form">
+                <source>Unsubscription-Form</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.n2go_form_type.0">
+                <source>Form type</source>
+            </trans-unit>
+            <trans-unit id="tl_newsletter2go.n2go_form_type.1">
+                <source>Please select form type</source>
             </trans-unit>
         </body>
     </file>
