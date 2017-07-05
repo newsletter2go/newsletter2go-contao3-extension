@@ -73,7 +73,7 @@ class Newsletter2GoApi extends \Controller
                         $response = Nl2go_ResponseHelper::generateSuccessResponse();
                         break;
                     default:
-                        $response = Nl2go_ResponseHelper::generateErrorResponse('Invalid or unknow action method call', Nl2go_ResponseHelper::ERRNO_PLUGIN_OTHER);
+                        $response = Nl2go_ResponseHelper::generateErrorResponse('Invalid or unknown action method call', Nl2go_ResponseHelper::ERRNO_PLUGIN_OTHER);
                         break;
                 }
             }
@@ -95,34 +95,82 @@ class Newsletter2GoApi extends \Controller
         $result = array();
         $postId = \Input::post('postId');
 
-        $objArticle = \ArticleModel::findByIdOrAliasAndPid($postId, null);
-        if (!$objArticle) {
-            return array(
-                'success' => false,
-                'message' => "Article with id ($postId) not found!",
-                'errorcode' => Nl2go_ResponseHelper::ERRNO_PLUGIN_OTHER,
-            );
+        $arrNews = $this->n2goModel->findNewsByIdOrAlias($postId); //  check if there's news with id or alias
+
+        if ($arrNews) {
+
+            $objNews = \NewsModel::findByIdOrAlias($arrNews['id'], array( $arrNews['pid'] ));
+
+            if (!empty($arrNews['jumpTo'])) {
+                /** @var \PageModel $objPage */
+                $objPage = \PageModel::findById($arrNews['jumpTo']);
+            } else {
+                /** @var \NewsArchiveModel $objNewsArchive */
+                $objNewsArchive = \NewsArchiveModel::findById($arrNews['pid']);
+
+                /** @var \PageModel $objPage */
+                $objPage = \PageModel::findById($objNewsArchive->jumpTo);
+            }
+
+            /** @var \ContentModel $contentElement */
+            $contentElement = \ContentModel::findPublishedByPidAndTable($arrNews['id'] , 'tl_news');
+
+            $strNews = '';
+            if($contentElement) {
+                $arrayModels = $contentElement->getModels();
+                foreach ($arrayModels as $contentModel) {
+                    $strNewsTemp = $this->replaceInsertTags(self::getContentElement($contentModel), false);
+                    $strNewsTemp = html_entity_decode($strNewsTemp, ENT_QUOTES, \Config::get('characterSet'));
+                    $strNewsTemp = $this->convertRelativeUrls($strNewsTemp);
+                    $strNews = $strNews . $strNewsTemp;
+                }
+            }
+
+            $result['id'] = $postId;
+            $result['title'] = $objNews->headline;
+            $objResult = $objNews;
+            $strResult = $strNews;
+
+        } else {
+
+            $objArticle = \ArticleModel::findByIdOrAliasAndPid($postId, null);
+
+            if (!$objArticle) {
+                return array(
+                    'success' => false,
+                    'message' => "Article or News with id ($postId) not found!",
+                    'errorcode' => Nl2go_ResponseHelper::ERRNO_PLUGIN_OTHER,
+                );
+            }
+
+            /** @var \PageModel $objPage */
+            $objPage = \PageModel::findById($objArticle->pid);
+
+            $objArticle->printable = 0;
+            
+            $strArticle = $this->replaceInsertTags(self::getArticle($objArticle), false);
+            $strArticle = html_entity_decode($strArticle, ENT_QUOTES, \Config::get('characterSet'));
+            $strArticle = $this->convertRelativeUrls($strArticle);
+
+            $result['id'] = $postId;
+            $result['title'] = $objArticle->title;
+
+            $objResult = $objArticle;
+            $strResult = $strArticle;
         }
 
-        /** @var \PageModel $objPage */
-        $objPage = \PageModel::findById($objArticle->pid);
-        $objArticle->printable = 0;
-
-        $strArticle = $this->replaceInsertTags(self::getArticle($objArticle), false);
-        $strArticle = html_entity_decode($strArticle, ENT_QUOTES, \Config::get('characterSet'));
-        $strArticle = $this->convertRelativeUrls($strArticle);
-
-        $result['id'] = $postId;
-        $result['title'] = $objArticle->title;
         $result['url'] = \Environment::get('base');
         $result['link'] = $objPage->getFrontendUrl();
-        $result['description'] = preg_replace('/<!--(.|\s)*?-->/', '', $strArticle);
-        $result['shortDescription'] = $objArticle->teaser;
+        $result['description'] = preg_replace('/<!--(.|\s)*?-->/', '', $strResult);
+        $result['shortDescription'] = $objResult->teaser;
         $result['category'] = array();
-        $result['tags'] = explode(',', $objArticle->keywords);
-        $result['date'] = date("Y-m-d H:i:s", $objArticle->tstamp);
+        if (isset($objResult->keywords)) {
+            $result['tags'] = explode(',', $objResult->keywords);
+        } else {
+            $result['tags'] = array();
+        }
+        $result['date'] = date("Y-m-d H:i:s", $objResult->tstamp);
         $result['images'] = array();
-
 
         // extract images from source
         $imagesArray = array();
@@ -133,9 +181,9 @@ class Newsletter2GoApi extends \Controller
             $result['images'][] = $tempImage[2][0];
         }
 
-        $objAuthor = UserModel::findById($objArticle->author);
+        $objAuthor = UserModel::findById($objResult->author);
         $result['author'] = $objAuthor->username;
-
+        
         return array('post' => $result);
     }
 
