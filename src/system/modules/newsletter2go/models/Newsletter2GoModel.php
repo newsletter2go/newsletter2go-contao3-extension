@@ -307,6 +307,22 @@ class Newsletter2GoModel
     }
 
     /**
+     * @param string $varId
+     * @return array|false
+     */
+    public function findNewsByIdOrAlias($varId)
+    {
+        $table = 'tl_news';
+
+        $sql = 'SELECT *  FROM ' . $table . ' WHERE (' . $table . '.id= ' . $varId . ' OR ' . $table . '.alias=' . $varId . ')';
+
+        $query = $this->dbInstance->prepare($sql)->execute();
+        $result = $query->fetchAssoc();
+
+        return $result;
+    }
+
+    /**
      * @param array $fields
      * @param string $type
      * @return string
@@ -450,6 +466,24 @@ class Newsletter2GoModel
 
         return true;
 
+    }
+
+    /**
+     * This method saves form types in database.
+     *
+     * @param $forms
+     * @param $formUniqueCode
+     */
+    public function saveFormType($forms, $formUniqueCode)
+    {
+        foreach ($forms as $form) {
+            if ($form['hash'] == $formUniqueCode) {
+                $subscribe = $form['type_subscribe'] !== false ? 1 : 0;
+                $unSubscribe = $form['type_unsubscribe'] !== false ?  1 : 0;
+                $this->saveConfigValue('n2go_typeSubscribe', $subscribe);
+                $this->saveConfigValue('n2go_typeUnsubscribe', $unSubscribe);
+            }
+        }
     }
 
 }

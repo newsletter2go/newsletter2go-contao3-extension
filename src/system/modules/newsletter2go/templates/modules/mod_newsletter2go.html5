@@ -1,8 +1,14 @@
-
+<?php if(empty($this->nl2gFormTypeAvailable[$this->nl2gFormType])) {
+?> <div class="widget nl2go-widget">This form type is not available for selected form</div>
+<?php } else { $GLOBALS['n2go_script_loaded'] = true; ?>
 <script id="<?= $this->uniqueId ? $this->uniqueId : 'n2g_script' ?>">
-    !function(e,t,n,c,r,a,i){e.Newsletter2GoTrackingObject=r,e[r]=e[r]||function(){(e[r].q=e[r].q||[]).push(arguments)},e[r].l=1*new Date,a=t.createElement(n),i=t.getElementsByTagName(n)[0],a.async=1,a.src=c,i.parentNode.insertBefore(a,i)}(window,document,"script","//static-staging.newsletter2go.com/utils.js","n2g");
-    n2g('create','<?=$this->formUniqueCode?>');
-    n2g('<?=$this->nl2gFormType?>:createForm',<?=$this->nl2gStylesConfigObject?> <?= $this->uniqueId ? ',"'.$this->uniqueId.'"' : "" ?>);
+    <?= $this->utilsJs ?>
+    document.addEventListener('DOMContentLoaded', function() {
+        n2g('create','<?=$this->formUniqueCode?>');
+        n2g('<?=$this->nl2gFormType?>:createForm',<?=$this->nl2gStylesConfigObject?> <?= $this->uniqueId ? ',"'.$this->uniqueId.'"' : "" ?>);
+    }, false);
 </script>
+<?php } ?>
+
 
 

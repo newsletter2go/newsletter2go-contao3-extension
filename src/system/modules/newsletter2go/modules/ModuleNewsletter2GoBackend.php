@@ -60,10 +60,16 @@ class ModuleNewsletter2GoBackend extends \BackendModule
 
         if ((\Input::post('FORM_SUBMIT') == 'tl_nl2go_configuration') && !isset($disconnect)) {
             $formUniqueCode = \Input::post('formUniqueCode') ? \Input::post('formUniqueCode') : '';
-            $widgetStyleConfig = \Input::post('widgetStyleConfig') ? \Input::postRaw('widgetStyleConfig') : '';
 
+            $widgetStyleConfig = json_decode(stripcslashes(\Input::postRaw('widgetStyleConfig')));
+            if (isset($widgetStyleConfig)) {
+                $model->saveConfigValue('widgetStyleConfig', \Input::postRaw('widgetStyleConfig'));
+            }
+
+            $authKey = $model->getConfigValue('auth_key');
+            $forms = $model->getForms($authKey);
+            $model->saveFormType($forms, $formUniqueCode);
             $model->saveConfigValue('formUniqueCode', $formUniqueCode);
-            $model->saveConfigValue('widgetStyleConfig', $widgetStyleConfig);
         }
 
         $tplObject->apiKey = $model->getConfigValue('apiKey');

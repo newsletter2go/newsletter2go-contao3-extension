@@ -523,7 +523,7 @@ input[type=checkbox].n2go-required:checked:before {
 .n2go-reset-styles-btn {
     float:left;
     height: 22px;
-    padding: 6px 2px 0px 8px;
+    padding: 6px 2px 0px 15px;
 }
 
 .n2go-reset-styles-btn:hover {

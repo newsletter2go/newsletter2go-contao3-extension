@@ -47,6 +47,9 @@ class ModuleNewsletter2GoFrontend extends \Module
         $model = Newsletter2GoModel::getInstance();
         $this->Template->formUniqueCode = $model->getConfigValue('formUniqueCode');
         $this->Template->nl2gStylesConfigObject = $model->getConfigValue('widgetStyleConfig');
+        $formTypeAvailable['subscribe'] = $model->getConfigValue('n2go_typeSubscribe');
+        $formTypeAvailable['unsubscribe'] = $model->getConfigValue('n2go_typeUnsubscribe');
+        $this->Template->nl2gFormTypeAvailable = $formTypeAvailable;
         $result = $model->getFormType($this->arrData['id']);
 
         if ($result === 'Unsubscribe-Form') {
@@ -57,7 +60,14 @@ class ModuleNewsletter2GoFrontend extends \Module
 
         $this->Template->nl2gFormType = $formType;
         $this->Template->uniqueId = uniqid();
-        
+
+        // checks if utils.js is loaded
+        $this->Template->utilsJs = !isset($GLOBALS['n2go_script_loaded']) ?
+            '!function(e,t,n,c,r,a,i){e.Newsletter2GoTrackingObject=r,e[r]=e[r]||
+            function(){(e[r].q=e[r].q||[]).push(arguments)},e[r].l=1*new Date,a=t.createElement(n),
+            i=t.getElementsByTagName(n)[0],a.async=1,a.src=c,i.parentNode.insertBefore(a,i)}
+            (window,document,"script","//static-staging.newsletter2go.com/utils.js","n2g");' : '';
+
     }
 
     private function myGenerateAjax()

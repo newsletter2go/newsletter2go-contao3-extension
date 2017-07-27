@@ -36,12 +36,11 @@ class Newsletter2GoResetStyles extends \Controller
 
     public function run()
     {
-        $style = \Input::post('style');
+        $style = \Input::post('style', true);
 
         $model = Newsletter2GoModel::getInstance();
 
         if (!empty($style)) {
-
             $model->saveConfigValue('widgetStyleConfig', $style);
         }
 
