@@ -352,22 +352,6 @@ class Newsletter2GoModel
         return 'SELECT ' . implode(', ', $selectFields) . ' FROM ' . $table;
     }
 
-
-    /**
-     * @param string $varId
-     * @return array|false
-     */
-    public function findNewsByIdOrAlias($varId)
-    {
-        $table = 'tl_news';
-
-        $sql = 'SELECT *  FROM ' . $table . ' WHERE (' . $table . '.id= ' . $varId . ' OR ' . $table . '.alias=' . $varId . ')';
-
-        $query = $this->dbInstance->prepare($sql)->execute();
-        $result = $query->fetchAssoc();
-
-        return $result;
-        }
   /**
      * Creates request and returns response. New API and access token
      *
