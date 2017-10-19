@@ -1,0 +1,171 @@
+en<?xml version="1.0" encoding="UTF-8"?>
+  <xliff version="1.1">
+      <file datatype="php" original="system/modules/newsletter2go/languages/de/tl_newsletter2go.php" source-language="de">
+          <body>
+              <trans-unit id="tl_newsletter2go.apikey_title">
+                  <source>Connect to Newsletter2Go</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.apikey_placeholder">
+                  <source>Insert your Newsletter2Go API key</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.curl_missing">
+                  <source>CURL library is required to use this Newsletter2Go module. Please install CURL to continue.</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.apikey_link">
+                  <source>Wo finde ich meinen API-Key?</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.api_connected">
+                  <source>Erfolgreich verbunden</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.widget_main_title">
+                   <source>Newsletter2Go Contao Plugin</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.api_not_connected">
+                  <source>Noch nicht verbunden</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.formUniqueCode_title">
+                  <source>Wählen Sie ein Anmeldeformular aus</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.formUniqueCode_placeholder">
+                  <source>Fügen Sie Ihren Formularcode ein</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.formUniqueCode_link">
+                  <source>Wo finde ich meinen Formularcode?</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.doi_connected">
+                  <source>Valider DOI-Code ( Host: %s)</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.doi_not_connected">
+                  <source>Invalider DOI-Code</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.email">
+                  <source>E-mail</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.first_name">
+                  <source>Vorname</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.last_name">
+                  <source>Nachname</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.gender">
+                  <source>Geschlecht</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.required">
+                  <source>Pflichtfeld</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.save">
+                  <source>speichern</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.config_subs_form">
+                  <source>Konfigurieren Sie das Styling Ihres Formulars</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.field_label">
+                  <source>Newsletter2Go Feld</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.field_title_label">
+                  <source>Titel</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.data_fields_title">
+                  <source>Welche Felder sollen in Ihrem Formular sichtbar sein?</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.success">
+                  <source>Erfolgreich</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.failure_email">
+                  <source>Fehler (falsche E-Mail Syntax)</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.failure_fields">
+                  <source>Fehler (Pflichtfelder nicht ausgefüllt)</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.failure_general">
+                  <source>Failure (general error)</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.failure_subscribed">
+                  <source>Failure (Bereits zum Newsletter angemeldet)</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.button_text">
+                  <source>Text auf dem Button</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.attention">
+                  <source><![CDATA[
+                  <strong>Attention: </strong>In Deutschland ist es aus rechtlichen Gründen nur erlaubt das E-Mail-Feld als Pflichtfeld zu setzten.
+                  ]]></source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.texts.buttonText">
+                  <source>Jetzt anmelden!</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.texts.success">
+                  <source>Danke für die Anmeldung, wir haben Ihnen eine Bestätigungsmail an Ihre E-Mail-Adresse geschickt.</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.texts.failureSubsc">
+                  <source>Danke für die Anmeldung, Sie sind aber breits zum Newsletter angemeldet</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.texts.failureEmail">
+                  <source>Die angegebene E-Mail-Adresse ist nicht korrekt.</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.texts.failureRequired">
+                  <source>Bitte füllen Sie alle Felder aus.</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.texts.failureError">
+                  <source>Aktuell ist eine Registrierung nicht möglich, bitte versuchen Sie es später erneut.</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.form_bg_color">
+                  <source>Formular Hintergrundfarbe</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.input_text_color">
+                  <source>Eingabefeld Textfarbe</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.label_text_color">
+                  <source>Label Textfarbe</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.input_border_color">
+                  <source>Eingabefeld Rahmenfarbe</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.input_bg_color">
+                  <source>Eingabefeld Hintergrundfarbe</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.btn_text_color">
+                  <source>Button Textfarbe</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.btn_bg_color">
+                  <source>Button Hintergrundfarbe</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.texts_title">
+                  <source>Generelle Einstellungen</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.source_code">
+                  <source>Quellcode</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.colors_title">
+                  <source>Vorschau</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.save2">
+                  <source>Einstellungen speichern</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.widget_title">
+                  <source>Hier sehen Sie eine Vorschau</source>
+              </trans-unit>
+  			<trans-unit id="tl_newsletter2go.disconnect">
+                  <source>Verbindung trennen</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.reset_styles">
+                  <source>Einstellungen zurücksetzen</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.please_select">
+                  <source>-- bitte auswählen --</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.subscription_form">
+                  <source>Anmeldeformular</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.unsubscription_form">
+                  <source>Abmeldeformular</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.n2go_form_type.0">
+                  <source>Formulartyp</source>
+              </trans-unit>
+              <trans-unit id="tl_newsletter2go.n2go_form_type.1">
+                  <source>Bitte wählen Sie einen Formulartyp aus</source>
+              </trans-unit>
+          </body>
+      </file>
+  </xliff>

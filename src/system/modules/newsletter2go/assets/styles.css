@@ -223,6 +223,21 @@ input[type=checkbox].n2go-required:checked:before {
     padding: 20px;
 }
 
+.n2go-block100.main-block {
+    width: 94%;
+    background: #fff;
+    border-radius: 5px;
+    padding: 21px;
+    margin-bottom: 5px;
+}
+
+.n2go_logo{
+    width: 94%;
+    background: #fff;
+    padding: 21px;
+    margin-bottom: 5px;
+}
+
 .n2go-block25 {
     /*width: 25%;*/
     float:left;

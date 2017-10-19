@@ -10,6 +10,44 @@
     <h1><?= $this->myLabels['curl_missing'] ?></h1>
     <?php } ?>
     <div class="n2go-section">
+	<img src="/system/modules/newsletter2go/assets/banner_contao_newsletter2go_COM.png" class="n2go_logo">
+				<?php if ($this->forms !== false) { ?>
+	<div class="n2go-block100 main-block">
+            <div class="panel">
+                <div class="panel-heading text-center">
+                    <h3>So benutzen Sie die Anmeldeformulare</h3>
+                </div>
+				<div class="panel-body">
+					<div class="n2go-row">
+						<div class="n2go-block50">
+							<h4>als Module</h4>
+							<p>Als Module kann das Formular in den Seiten oder Artikeln hinzugefügt werden. Dazu gehen Sie in die gewünschte stelle und fügen ein neues Modul = Newsletter2Go hinzu.
+							Sie können wählen welche Art des Formulars hinzugefügt werden soll</p>
+							<p>Ausführlicher finden Sie diese Information <a href="https://hilfe.newsletter2go.com/empfanger-verwalten/anmeldeformular/wie-kann-ich-das-newsletter2go-plugin-fur-contao-einrichten.html">hier</a></p>
+							<br>
+
+							<h4><div class="dashicons dashicons-info"></div> Tipps und Tricks</h4>
+							<p>In unserem <a href="https://hilfe.newsletter2go.com">Hilfebereich</a> finden Sie hilfreiche Anleitungen zu unserer Software und deren erfolgreiche Nutzung.</p>
+							<p>Wie sich unsere Formulare weiter über die "Source" (Rechter Tab) individualisieren lassen erfahren Sie <a href="https://hilfe.newsletter2go.com/empfanger-verwalten/anmeldeformular/wie-kann-ich-das-anmeldeformular-verwenden-einbetten-und-anpassen.html">hier</a></p>
+						</div>
+
+						<div class="n2go-block50">
+							<h4>in Beiträgen und Seiten</h4>
+							<p>Über den Shortcode <code>{{n2g::plugin}}</code> können Sie ihr
+								konfiguriertes Anmeldeformular in allen Seiten und Beiträgen über den Editor einbinden.<br>
+								<br>
+								Durch den Parameter <code>{{n2g::subscribe::plugin}}</code> bzw. <code>{{n2g::unsubscribe::plugin}}</code>
+								erzeugen Sie ein An- bzw. Abmeldeformular, soweit dieser Formular-Typ im Newsletter2Go-System ebenfalls aktiviert wurde.
+								Standardmäßig wird ein Anmeldeformular erzeugt.<br><br>
+								Mit der zusätzlichen Option <code>{{n2g::subscribe::popup::n}</code> wird aus dem
+								eingebetten Formular ein Popup welches auf der spezifischen Seite eingeblendet wird.</p>
+						</div>
+					</div>
+				</div>
+                <div style="clear: both"></div>
+            </div>
+				 <?php } ?>
+        </div>
         <div class="n2go-block50 main-block">
             <div class="panel">
                 <div class="panel-heading text-center">

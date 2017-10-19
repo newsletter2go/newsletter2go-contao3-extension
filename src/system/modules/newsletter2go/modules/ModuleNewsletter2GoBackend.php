@@ -43,7 +43,7 @@ class ModuleNewsletter2GoBackend extends \BackendModule
         $model = Newsletter2GoModel::getInstance();
         $tplObject->authKey = $model->getConfigValue('auth_key');
         $tplObject->apiKey = $model->getConfigValue('apiKey');
-        $queryParams['version'] = $this->version;
+        $queryParams['version'] = 3000;
         $queryParams['apiKey'] = $tplObject->apiKey;
         if ($queryParams['apiKey'] == '') {
             $model->saveConfigValue('apiKey', $this->generateRandomString());
