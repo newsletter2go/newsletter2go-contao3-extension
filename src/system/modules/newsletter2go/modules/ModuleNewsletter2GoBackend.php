@@ -4,14 +4,14 @@ namespace Contao;
 
 class ModuleNewsletter2GoBackend extends \BackendModule
 {
-    const N2GO_INTEGRATION_URL = 'https://ui-staging.newsletter2go.com/integrations/connect/CTO/';
+    const N2GO_INTEGRATION_URL = 'https://ui.newsletter2go.com/integrations/connect/CTO/';
     /**
      * Template
      * @var string
      */
     protected $strTemplate = 'be_newsletter2go';
 
-    private $version = 4000;
+    private $version = 4001;
 
     /**
      * Compile the current element.

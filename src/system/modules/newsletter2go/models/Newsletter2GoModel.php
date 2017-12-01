@@ -4,9 +4,9 @@ namespace Contao;
 
 class Newsletter2GoModel
 {
-    const N2GO_API_URL = 'https://api-staging.newsletter2go.com/';
+    const N2GO_API_URL = 'https://api.newsletter2go.com/';
     const N2GO_REFRESH_GRANT_TYPE = 'https://nl2go.com/jwt_refresh';
-    const N2GO_STATIC_URL = 'https://static-staging.newsletter2go.com/';
+    const N2GO_STATIC_URL = 'https://static.newsletter2go.com/';
 
     /** @var \Database */
     private $dbInstance = null;
