@@ -8,7 +8,7 @@ class Newsletter2GoApi extends \Controller
     private static $instance;
 
     /** @var int  */
-    private $version = 4000;
+    private $version = 4002;
 
     /** @var Newsletter2GoModel  */
     private $n2goModel;
